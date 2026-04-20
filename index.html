@@ -487,17 +487,136 @@ footer {
 /* ── ANCHORS ── */
 [id] { scroll-margin-top: 80px; }
 
+/* ── HAMBURGER BUTTON ── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  margin-left: 8px;
+}
+.hamburger:hover { background: rgba(255,255,255,0.1); }
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU DRAWER ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 199;
+  background: rgba(0,0,0,0.35);
+}
+.mobile-menu.open { display: block; }
+.mobile-menu-inner {
+  position: absolute;
+  top: 0; right: 0;
+  width: 80%;
+  max-width: 300px;
+  height: 100%;
+  background: var(--azul);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.2);
+  padding: 80px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+.mobile-menu-inner a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 13px 16px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu-inner a:last-child { border-bottom: none; }
+.mobile-menu-inner a:hover { background: rgba(255,255,255,0.1); color: white; }
+.mobile-menu-inner .btn-portal-mobile {
+  background: var(--celeste);
+  color: white !important;
+  margin-top: 12px;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  justify-content: center;
+  border-bottom: none !important;
+}
+
 @media (max-width: 900px) {
-  .hero { flex-direction: column; gap: 36px; padding: 44px 24px; }
-  .hero-visual { width: 100%; }
-  .footer-top { grid-template-columns: 1fr; gap: 28px; }
-  .reclamos-grid { grid-template-columns: 1fr; }
-  .main { padding: 40px 24px; }
-  header { padding: 0 20px; }
+  /* Header */
+  header { padding: 0 16px; }
   .header-nav { display: none; }
-  .franja { padding: 16px 24px; }
-  footer { padding: 40px 24px 24px; }
-  .topbar { padding: 7px 20px; }
+  .hamburger { display: flex; }
+  .topbar { display: none; }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    gap: 28px;
+    padding: 36px 20px 32px;
+    text-align: center;
+  }
+  .hero-text p { max-width: 100%; }
+  .hero-btns { justify-content: center; }
+  .hero-tag { margin: 0 auto 16px; }
+
+  /* Hero visual cards */
+  .hero-visual {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hv-card { padding: 16px 12px; }
+  .hv-val { font-size: 18px; }
+
+  /* Main content */
+  .main { padding: 32px 16px; }
+  .section-block { margin-bottom: 44px; }
+
+  /* Franja */
+  .franja { padding: 14px 16px; }
+  .franja-inner { flex-direction: column; gap: 10px; }
+
+  /* Grids → single column */
+  .crono-grid { grid-template-columns: 1fr; }
+  .doc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .reclamos-grid { grid-template-columns: 1fr; }
+  .req-niveles { grid-template-columns: 1fr; }
+  .sedes-grid { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  footer { padding: 36px 20px 24px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 28px 16px 24px; }
+  .hero-text h2 { font-size: 24px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-a, .btn-b { width: 100%; justify-content: center; }
+  .doc-grid { grid-template-columns: 1fr; }
+  .main { padding: 24px 14px; }
+  .hv-val { font-size: 16px; }
 }
 </style>
 </head>
@@ -516,9 +635,24 @@ footer {
     <a href="#documentacion" style="color: #fff;">Documentación</a>
     <a href="#pasos" style="color: #fff;">Cómo inscribirse</a>
     <a href="#sedes" style="color: #fff;">Sedes</a>
-    <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-portal" style="background: var(--celeste); color: #fff !important;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Acceso Docente</a>
+    <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-portal" style="background: var(--celeste); color: #fff !important;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Portal Oficial</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <a href="#cronograma" class="mobile-link"><i class="fa-solid fa-calendar-days"></i> Cronograma</a>
+    <a href="#requisitos" class="mobile-link"><i class="fa-solid fa-list-check"></i> Requisitos</a>
+    <a href="#documentacion" class="mobile-link"><i class="fa-solid fa-folder-open"></i> Documentación</a>
+    <a href="#pasos" class="mobile-link"><i class="fa-solid fa-list-ol"></i> Cómo inscribirse</a>
+    <a href="#sedes" class="mobile-link"><i class="fa-solid fa-location-dot"></i> Sedes</a>
+    <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-portal-mobile"><i class="fa-solid fa-user"></i> Acceso Docente</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <div style="border-bottom: 1px solid var(--gris-borde);">
@@ -908,6 +1042,32 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => {
     a.style.background = a.getAttribute('href') === '#' + cur ? 'var(--celeste-claro)' : '';
     a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--azul)' : '';
+  });
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
   });
 });
 </script>

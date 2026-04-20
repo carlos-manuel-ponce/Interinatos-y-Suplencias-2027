@@ -117,9 +117,12 @@ header {
 .btn-portal:hover { background: var(--azul-medio) !important; }
 
 /* ── HERO ── */
+.hero-wrapper {
+  border-bottom: 1px solid var(--gris-borde);
+  background: var(--blanco);
+}
 .hero {
   background: var(--blanco);
-  border-bottom: 3px solid var(--celeste-claro);
   padding: 64px 40px 56px;
   display: flex;
   align-items: center;
@@ -127,6 +130,61 @@ header {
   max-width: 1100px;
   margin: 0 auto;
 }
+
+/* Hero fechas strip (shown in mobile) */
+.hero-fechas {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: var(--gris-fondo);
+  border: 1px solid var(--gris-borde);
+  border-radius: 14px;
+  margin: 20px 0 24px;
+  overflow: hidden;
+}
+.hf-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--gris-borde);
+}
+.hf-item:last-child { border-bottom: none; }
+.hf-ico {
+  width: 40px; height: 40px; min-width: 40px;
+  background: var(--celeste-claro);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--celeste);
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.hf-ico--cierre { background: #FFF3E0; color: #E65100; }
+.hf-ico--virtual { background: #E8F5E9; color: #2E7D32; }
+.hf-val {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul);
+  line-height: 1.2;
+}
+.hf-lbl {
+  font-size: 11px;
+  color: var(--gris-muted);
+  margin-top: 2px;
+}
+.hf-sep { display: none; }
+
+/* btn hero destacado */
+.btn-hero-main {
+  background: var(--celeste) !important;
+  font-size: 15px !important;
+  padding: 14px 28px !important;
+}
+.btn-hero-main:hover { background: var(--azul-medio) !important; }
+
+/* desktop: show side cards, hide fechas strip */
+.hero-visual--desktop { display: grid; }
 .hero-text { flex: 1; }
 .hero-tag {
   display: inline-flex;
@@ -568,26 +626,36 @@ footer {
   .hamburger { display: flex; }
   .topbar { display: none; }
 
-  /* Hero */
+  /* Hero: stack, centered */
   .hero {
     flex-direction: column;
-    gap: 28px;
-    padding: 36px 20px 32px;
+    gap: 0;
+    padding: 32px 20px 28px;
     text-align: center;
   }
+  .hero-text { width: 100%; }
   .hero-text p { max-width: 100%; }
-  .hero-btns { justify-content: center; }
-  .hero-tag { margin: 0 auto 16px; }
+  .hero-tag { margin: 0 auto 14px; }
+  .hero-text h2 { font-size: clamp(22px, 6vw, 32px); margin-bottom: 12px; }
 
-  /* Hero visual cards */
-  .hero-visual {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    grid-template-columns: 1fr 1fr;
+  /* Mostrar fechas strip, ocultar cards laterales */
+  .hero-fechas { display: flex; }
+  .hero-visual--desktop { display: none !important; }
+
+  /* Botones full-width */
+  .hero-btns {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 4px;
   }
-  .hv-card { padding: 16px 12px; }
-  .hv-val { font-size: 18px; }
+  .btn-a, .btn-b {
+    width: 100%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+  .btn-hero-main { font-size: 15px !important; padding: 14px 20px !important; }
 
   /* Main content */
   .main { padding: 32px 16px; }
@@ -597,7 +665,7 @@ footer {
   .franja { padding: 14px 16px; }
   .franja-inner { flex-direction: column; gap: 10px; }
 
-  /* Grids → single column */
+  /* Grids */
   .crono-grid { grid-template-columns: 1fr; }
   .doc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .reclamos-grid { grid-template-columns: 1fr; }
@@ -610,13 +678,10 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero { padding: 28px 16px 24px; }
-  .hero-text h2 { font-size: 24px; }
-  .hero-btns { flex-direction: column; align-items: center; }
-  .btn-a, .btn-b { width: 100%; justify-content: center; }
+  .hero { padding: 24px 14px 20px; }
+  .hero-text h2 { font-size: 22px; }
   .doc-grid { grid-template-columns: 1fr; }
   .main { padding: 24px 14px; }
-  .hv-val { font-size: 16px; }
 }
 </style>
 </head>
@@ -655,20 +720,54 @@ footer {
 </div>
 
 <!-- HERO -->
-<div style="border-bottom: 1px solid var(--gris-borde);">
+<div class="hero-wrapper">
   <section class="hero">
     <div class="hero-text">
+
       <a class="hero-tag" href="https://docs.google.com/document/d/14KKZKPvMd3Ft7_GujkThKQAUilIaGtDjjjhisjaGbAs/edit?usp=sharing" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;cursor:pointer;font-weight:600; text-transform: none;">
         <i class="fa-solid fa-file-lines"></i> Resolución Nº 2-JCD-2026
       </a>
+
       <h2>Inscripción a<br><em>Interinatos y Suplencias</em><br>Ciclo Lectivo 2027</h2>
       <p>Convocatoria oficial para aspirantes a cargos y horas cátedra en los Niveles Inicial, Primario y Secundario de todas las Regiones Educativas de la Provincia.</p>
+
+      <!-- FECHAS DESTACADAS mobile -->
+      <div class="hero-fechas">
+        <div class="hf-item">
+          <div class="hf-ico"><i class="fa-solid fa-calendar-check"></i></div>
+          <div>
+            <div class="hf-val">4 de Mayo</div>
+            <div class="hf-lbl">Inicio de inscripción</div>
+          </div>
+        </div>
+        <div class="hf-sep"></div>
+        <div class="hf-item">
+          <div class="hf-ico hf-ico--cierre"><i class="fa-solid fa-calendar-xmark"></i></div>
+          <div>
+            <div class="hf-val">22 de Mayo</div>
+            <div class="hf-lbl">Cierre de inscripción</div>
+          </div>
+        </div>
+        <div class="hf-sep"></div>
+        <div class="hf-item">
+          <div class="hf-ico hf-ico--virtual"><i class="fa-solid fa-laptop"></i></div>
+          <div>
+            <div class="hf-val">100% Virtual</div>
+            <div class="hf-lbl">Sin presentación presencial</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTONES -->
       <div class="hero-btns">
-        <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-a"><i class="fa-solid fa-user"></i> Acceso Docente</a>
+        <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-a btn-hero-main"><i class="fa-solid fa-user"></i> Acceso Docente</a>
         <a href="#pasos" class="btn-b"><i class="fa-solid fa-list-ol"></i> Cómo inscribirse</a>
       </div>
+
     </div>
-    <div class="hero-visual">
+
+    <!-- Cards laterales solo en desktop -->
+    <div class="hero-visual hero-visual--desktop">
       <div class="hv-card">
         <div class="hv-val">4 May</div>
         <div class="hv-lbl">Inicio</div>

@@ -634,9 +634,9 @@ footer {
     text-align: center;
   }
   .hero-text { width: 100%; }
-  .hero-text p { max-width: 100%; }
+  .hero-text p { max-width: 100%; font-size: 16px; line-height: 1.75; }
   .hero-tag { margin: 0 auto 14px; }
-  .hero-text h2 { font-size: clamp(22px, 6vw, 32px); margin-bottom: 12px; }
+  .hero-text h2 { font-size: clamp(28px, 7vw, 38px); margin-bottom: 14px; line-height: 1.15; }
 
   /* Mostrar fechas strip, ocultar cards laterales */
   .hero-fechas { display: flex; }
@@ -679,10 +679,81 @@ footer {
 
 @media (max-width: 480px) {
   .hero { padding: 24px 14px 20px; }
-  .hero-text h2 { font-size: 22px; }
+  .hero-text h2 { font-size: 26px; }
   .doc-grid { grid-template-columns: 1fr; }
   .main { padding: 24px 14px; }
 }
+
+/* ── SCROLL INDICATOR ── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(6px); opacity: 0.5; }
+}
+@keyframes wheelScroll {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0 10px;
+  background: var(--blanco);
+  border-bottom: 1px solid var(--gris-borde);
+  animation: fadeInUp 0.8s ease 0.6s both;
+  transition: opacity 0.4s;
+}
+.scroll-indicator.hidden { opacity: 0; pointer-events: none; }
+.scroll-indicator-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gris-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+.scroll-mouse {
+  width: 22px; height: 34px;
+  border: 2px solid var(--celeste-borde);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+.scroll-wheel {
+  width: 3px; height: 6px;
+  background: var(--celeste);
+  border-radius: 3px;
+  animation: wheelScroll 1.8s ease-in-out infinite;
+}
+
+/* ── HERO UX IMPROVEMENTS ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-text {
+  animation: heroFadeIn 0.7s ease both;
+}
+.hero-text h2 { animation: heroFadeIn 0.7s ease 0.1s both; }
+.hero-text p { animation: heroFadeIn 0.7s ease 0.2s both; }
+.hero-fechas { animation: heroFadeIn 0.7s ease 0.3s both; }
+.hero-btns { animation: heroFadeIn 0.7s ease 0.4s both; }
+
+/* Hide scroll indicator on desktop if not mobile */
+@media (min-width: 901px) {
+  .scroll-indicator { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -784,18 +855,7 @@ footer {
   </section>
 </div>
 
-<!-- FRANJA ALERTA -->
-<div style="padding: 20px 40px;">
-  <div class="franja" style="max-width: 1100px; margin: 0 auto; border-radius: 10px; border: 1px solid var(--celeste-borde);">
-    <div class="franja-inner">
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      <div>
-        <strong>Actualización obligatoria de legajo digital para el Ciclo 2027:</strong>
-        <p>Todos los aspirantes deben cargar nuevamente la totalidad de sus títulos, postítulos y datos personales, aunque los hubieran presentado en años anteriores.</p>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- CONTENIDO -->
       
@@ -1143,6 +1203,18 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--azul)' : '';
   });
 });
+
+// Hide scroll indicator on scroll
+const scrollIndicator = document.getElementById('scrollIndicator');
+if (scrollIndicator) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      scrollIndicator.classList.add('hidden');
+    } else {
+      scrollIndicator.classList.remove('hidden');
+    }
+  }, { passive: true });
+}
 
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');

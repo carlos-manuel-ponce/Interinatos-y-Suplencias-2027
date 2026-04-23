@@ -19,25 +19,10 @@
   --gris-texto: #3D5166;
   --gris-muted: #7D92A5;
   --acento-amarillo: #F0A500;
-  --verde: #0F7A5A;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: 'Open Sans', sans-serif; background: var(--blanco); color: var(--gris-texto); font-size: 15px; line-height: 1.65; }
-
-/* ── TOPBAR ── */
-.topbar {
-  background: var(--azul);
-  color: rgba(255,255,255,0.7);
-  font-size: 12px;
-  padding: 8px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  letter-spacing: 0.02em;
-}
-.topbar a { color: #7DD4F8; text-decoration: none; }
-.topbar span { display: flex; align-items: center; gap: 7px; }
 
 /* ── HEADER ── */
 header {
@@ -48,47 +33,11 @@ header {
   align-items: center;
   gap: 18px;
   height: 80px;
-  min-height: 60px;
   position: sticky;
   top: 0;
   z-index: 200;
   box-shadow: 0 1px 8px rgba(0,49,110,0.06);
 }
-
-@media (max-width: 900px) {
-  header {
-    padding: 0 16px;
-    height: 60px;
-    min-height: 48px;
-    gap: 10px;
-  }
-}
-@media (max-width: 600px) {
-  header {
-    padding: 0 6px;
-    height: 44px;
-    min-height: 38px;
-    gap: 6px;
-  }
-}
-.escudo {
-  width: 46px; height: 46px;
-  background: var(--azul);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.escudo i { color: white; font-size: 20px; }
-.logo-txt h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--azul);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  line-height: 1.2;
-}
-.logo-txt p { font-size: 11px; color: var(--gris-muted); margin-top: 1px; }
 .header-sep { flex: 1; }
 .header-nav { display: flex; align-items: center; gap: 4px; }
 .header-nav a {
@@ -131,7 +80,7 @@ header {
   margin: 0 auto;
 }
 
-/* Hero fechas strip (shown in mobile) */
+/* Hero fechas strip (mobile) */
 .hero-fechas {
   display: none;
   flex-direction: column;
@@ -168,14 +117,9 @@ header {
   color: var(--azul);
   line-height: 1.2;
 }
-.hf-lbl {
-  font-size: 11px;
-  color: var(--gris-muted);
-  margin-top: 2px;
-}
-.hf-sep { display: none; }
+.hf-lbl { font-size: 11px; color: var(--gris-muted); margin-top: 2px; }
 
-/* btn hero destacado */
+/* Botón hero destacado */
 .btn-hero-main {
   background: var(--celeste) !important;
   font-size: 15px !important;
@@ -183,7 +127,6 @@ header {
 }
 .btn-hero-main:hover { background: var(--azul-medio) !important; }
 
-/* desktop: show side cards, hide fechas strip */
 .hero-visual--desktop { display: grid; }
 .hero-text { flex: 1; }
 .hero-tag {
@@ -262,42 +205,12 @@ header {
 .hv-val { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; color: var(--azul); line-height: 1.1; }
 .hv-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gris-muted); margin-top: 4px; }
 
-/* ── FRANJA CELESTE ── */
-.franja {
-  background: var(--celeste-claro);
-  border-top: 1px solid var(--celeste-borde);
-  border-bottom: 1px solid var(--celeste-borde);
-  padding: 20px 40px;
-}
-.franja-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.franja i { color: var(--celeste); font-size: 18px; }
-.franja strong { color: var(--azul); font-size: 14px; }
-.franja p { font-size: 13px; color: var(--gris-texto); }
-
 /* ── MAIN ── */
 .main { max-width: 1100px; margin: 0 auto; padding: 56px 40px; }
 
 /* ── SECTION HEADERS ── */
-.sh {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-.sh-line {
-  width: 4px;
-  height: 32px;
-  background: var(--celeste);
-  border-radius: 99px;
-  flex-shrink: 0;
-}
+.sh { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.sh-line { width: 4px; height: 32px; background: var(--celeste); border-radius: 99px; flex-shrink: 0; }
 .sh h3 {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
@@ -310,14 +223,9 @@ header {
 .section-block { margin-bottom: 60px; }
 
 /* ── CRONOGRAMA ── */
-.crono-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
+.crono-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
 .crono-card {
   background: var(--azul);
-  border: none;
   border-left: 6px solid var(--celeste);
   border-radius: 12px;
   padding: 22px 20px;
@@ -325,18 +233,17 @@ header {
   flex-direction: column;
   gap: 10px;
   transition: box-shadow 0.2s, border-color 0.2s;
-  position: relative;
-  overflow: hidden;
   color: #fff;
 }
 .crono-card:hover { box-shadow: 0 6px 20px rgba(0,49,110,0.09); border-color: var(--celeste-borde); }
 .crono-ico {
   width: 40px; height: 40px;
   border-radius: 10px;
+  background: var(--celeste-claro);
+  color: var(--celeste);
   display: flex; align-items: center; justify-content: center;
   font-size: 18px;
 }
-.crono-ico { background: var(--celeste-claro); color: var(--celeste) !important; }
 .crono-fecha { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; }
 .crono-titulo { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: #fff; }
 .crono-desc { font-size: 12px; color: #fff; line-height: 1.55; }
@@ -371,27 +278,20 @@ header {
 .req-niveles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 20px; }
 .niv-card {
   background: var(--azul);
-  color: #fff;
-  border: none !important;
-  border-left: 6px solid var(--celeste) !important;
+  border-left: 6px solid var(--celeste);
   border-radius: 12px;
   padding: 20px;
   transition: box-shadow 0.2s;
 }
 .niv-card:hover { box-shadow: 0 4px 14px rgba(0,150,214,0.1); }
-.niv-card h4 { color: #fff; }
-.niv-card p { color: #fff; }
 .niv-ico { font-size: 26px; margin-bottom: 10px; }
-.niv-card h4 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--azul); margin-bottom: 6px; }
+.niv-card h4 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
 .niv-card p { font-size: 13px; color: #fff; }
 
-.niv-card h4 { color: #fff !important; }
-
-/* ── ALERTA ── */
+/* ── ALERTAS ── */
 .alerta-w {
   display: flex; align-items: flex-start; gap: 12px;
   background: #FFFBEC;
-  border: none;
   border-left: 4px solid var(--acento-amarillo);
   border-radius: 0 10px 10px 0;
   padding: 14px 18px;
@@ -430,7 +330,7 @@ header {
 .doc-card p { font-size: 12px; color: var(--gris-muted); line-height: 1.55; }
 
 /* ── PASOS ── */
-.pasos-list { counter-reset: paso; display: flex; flex-direction: column; gap: 0; padding: 8px 24px; }
+.pasos-list { display: flex; flex-direction: column; padding: 8px 24px; }
 .paso {
   display: flex;
   align-items: flex-start;
@@ -455,15 +355,6 @@ header {
 .paso strong { font-size: 14px; font-weight: 600; color: var(--azul); display: block; margin-bottom: 4px; }
 .paso p { font-size: 13px; color: var(--gris-texto); margin: 0; }
 .paso p a { color: var(--celeste); text-decoration: none; font-weight: 600; }
-.btn-cta-block {
-  text-align: center;
-  margin-top: 32px;
-  padding: 32px;
-  background: var(--gris-fondo);
-  border-radius: 14px;
-  border: 1px solid var(--gris-borde);
-}
-.btn-cta-block p { font-size: 14px; color: var(--gris-texto); margin-bottom: 16px; }
 
 /* ── RECLAMOS ── */
 .reclamos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -545,7 +436,7 @@ footer {
 /* ── ANCHORS ── */
 [id] { scroll-margin-top: 80px; }
 
-/* ── HAMBURGER BUTTON ── */
+/* ── HAMBURGER ── */
 .hamburger {
   display: none;
   background: none;
@@ -571,7 +462,7 @@ footer {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── MOBILE MENU DRAWER ── */
+/* ── MOBILE MENU ── */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -619,72 +510,11 @@ footer {
   border-bottom: none !important;
 }
 
-@media (max-width: 900px) {
-  /* Header */
-  header { padding: 0 16px; }
-  .header-nav { display: none; }
-  .hamburger { display: flex; }
-  .topbar { display: none; }
-
-  /* Hero: stack, centered */
-  .hero {
-    flex-direction: column;
-    gap: 0;
-    padding: 32px 20px 28px;
-    text-align: center;
-  }
-  .hero-text { width: 100%; }
-  .hero-text p { max-width: 100%; font-size: 16px; line-height: 1.75; }
-  .hero-tag { margin: 0 auto 14px; }
-  .hero-text h2 { font-size: clamp(28px, 7vw, 38px); margin-bottom: 14px; line-height: 1.15; }
-
-  /* Mostrar fechas strip, ocultar cards laterales */
-  .hero-fechas { display: flex; }
-  .hero-visual--desktop { display: none !important; }
-
-  /* Botones full-width */
-  .hero-btns {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    margin-top: 4px;
-  }
-  .btn-a, .btn-b {
-    width: 100%;
-    justify-content: center;
-    font-size: 15px;
-    padding: 14px 20px;
-  }
-  .btn-hero-main { font-size: 15px !important; padding: 14px 20px !important; }
-
-  /* Main content */
-  .main { padding: 32px 16px; }
-  .section-block { margin-bottom: 44px; }
-
-  /* Franja */
-  .franja { padding: 14px 16px; }
-  .franja-inner { flex-direction: column; gap: 10px; }
-
-  /* Grids */
-  .crono-grid { grid-template-columns: 1fr; }
-  .doc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .reclamos-grid { grid-template-columns: 1fr; }
-  .req-niveles { grid-template-columns: 1fr; }
-  .sedes-grid { grid-template-columns: 1fr; }
-
-  /* Footer */
-  .footer-top { grid-template-columns: 1fr; gap: 28px; }
-  footer { padding: 36px 20px 24px; }
+/* ── ANIMACIONES ── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-@media (max-width: 480px) {
-  .hero { padding: 24px 14px 20px; }
-  .hero-text h2 { font-size: 26px; }
-  .doc-grid { grid-template-columns: 1fr; }
-  .main { padding: 24px 14px; }
-}
-
-/* ── SCROLL INDICATOR ── */
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(6px); opacity: 0.5; }
@@ -699,6 +529,29 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Hero entrance */
+.hero-text      { animation: heroFadeIn 0.7s ease both; }
+.hero-text h2   { animation: heroFadeIn 0.7s ease 0.1s both; }
+.hero-text p    { animation: heroFadeIn 0.7s ease 0.2s both; }
+.hero-fechas    { animation: heroFadeIn 0.7s ease 0.3s both; }
+.hero-btns      { animation: heroFadeIn 0.7s ease 0.4s both; }
+
+/* Scroll reveal — estado inicial (oculto) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+/* Visible — aplicado por JS con IntersectionObserver */
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+/* Scroll indicator */
 .scroll-indicator {
   display: flex;
   justify-content: center;
@@ -736,42 +589,58 @@ footer {
   animation: wheelScroll 1.8s ease-in-out infinite;
 }
 
-/* ── HERO UX IMPROVEMENTS ── */
-@keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-text {
-  animation: heroFadeIn 0.7s ease both;
-}
-.hero-text h2 { animation: heroFadeIn 0.7s ease 0.1s both; }
-.hero-text p { animation: heroFadeIn 0.7s ease 0.2s both; }
-.hero-fechas { animation: heroFadeIn 0.7s ease 0.3s both; }
-.hero-btns { animation: heroFadeIn 0.7s ease 0.4s both; }
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  header { padding: 0 16px; height: 60px; gap: 10px; }
+  .header-nav { display: none; }
+  .hamburger { display: flex; }
 
-/* Hide scroll indicator on desktop if not mobile */
-@media (min-width: 901px) {
+  .hero { flex-direction: column; gap: 0; padding: 32px 20px 28px; text-align: center; }
+  .hero-text { width: 100%; }
+  .hero-text p { max-width: 100%; font-size: 16px; line-height: 1.75; }
+  .hero-tag { margin: 0 auto 14px; }
+  .hero-text h2 { font-size: clamp(28px, 7vw, 38px); margin-bottom: 14px; }
+  .hero-fechas { display: flex; }
+  .hero-visual--desktop { display: none !important; }
+  .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 4px; }
+  .btn-a, .btn-b { width: 100%; justify-content: center; font-size: 15px; padding: 14px 20px; }
+  .btn-hero-main { font-size: 15px !important; padding: 14px 20px !important; }
+
+  .main { padding: 32px 16px; }
+  .section-block { margin-bottom: 44px; }
+  .crono-grid { grid-template-columns: 1fr; }
+  .doc-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .reclamos-grid { grid-template-columns: 1fr; }
+  .req-niveles { grid-template-columns: 1fr; }
+  .sedes-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  footer { padding: 36px 20px 24px; }
   .scroll-indicator { display: none; }
 }
-
+@media (max-width: 480px) {
+  header { padding: 0 6px; height: 44px; gap: 6px; }
+  .hero { padding: 24px 14px 20px; }
+  .hero-text h2 { font-size: 26px; }
+  .doc-grid { grid-template-columns: 1fr; }
+  .main { padding: 24px 14px; }
+}
 </style>
 </head>
 <body>
 
-
 <!-- HEADER -->
 <header>
   <div style="height: 100%; display: flex; align-items: center;">
-     <img src="logomin_blanco.png" alt="Logo Ministerio de Educación San Luis" style="height: 90px; max-height: 110px; width: auto; display: block; object-fit: contain; filter: drop-shadow(0 1px 4px rgba(0,0,0,0.08)); margin-top: 2px; margin-bottom: 2px;" />
+    <img src="logomin_blanco.png" alt="Logo Ministerio de Educación San Luis" style="height: 90px; max-height: 110px; width: auto; display: block; object-fit: contain;" />
   </div>
   <div class="header-sep"></div>
   <nav class="header-nav">
-    <a href="#cronograma" style="color: #fff;">Cronograma</a>
-    <a href="#requisitos" style="color: #fff;">Requisitos</a>
-    <a href="#documentacion" style="color: #fff;">Documentación</a>
-    <a href="#pasos" style="color: #fff;">Cómo inscribirse</a>
-    <a href="#sedes" style="color: #fff;">Sedes</a>
-    <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-portal" style="background: var(--celeste); color: #fff !important;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Portal Oficial</a>
+    <a href="#cronograma">Cronograma</a>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#documentacion">Documentación</a>
+    <a href="#pasos">Cómo inscribirse</a>
+    <a href="#sedes">Sedes</a>
+    <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-portal"><i class="fa-solid fa-arrow-up-right-from-square"></i> Portal Oficial</a>
   </nav>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -794,15 +663,13 @@ footer {
 <div class="hero-wrapper">
   <section class="hero">
     <div class="hero-text">
-
-      <a class="hero-tag" href="https://docs.google.com/document/d/14KKZKPvMd3Ft7_GujkThKQAUilIaGtDjjjhisjaGbAs/edit?usp=sharing" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;cursor:pointer;font-weight:600; text-transform: none;">
+      <a class="hero-tag" href="https://docs.google.com/document/d/14KKZKPvMd3Ft7_GujkThKQAUilIaGtDjjjhisjaGbAs/edit?usp=sharing" target="_blank" style="text-decoration:none;">
         <i class="fa-solid fa-file-lines"></i> Resolución Nº 2-JCD-2026
       </a>
-
       <h2>Inscripción a<br><em>Interinatos y Suplencias</em><br>Ciclo Lectivo 2027</h2>
       <p>Convocatoria oficial para aspirantes a cargos y horas cátedra en los Niveles Inicial, Primario y Secundario de todas las Regiones Educativas de la Provincia.</p>
 
-      <!-- FECHAS DESTACADAS mobile -->
+      <!-- Fechas strip (mobile) -->
       <div class="hero-fechas">
         <div class="hf-item">
           <div class="hf-ico"><i class="fa-solid fa-calendar-check"></i></div>
@@ -811,7 +678,6 @@ footer {
             <div class="hf-lbl">Inicio de inscripción</div>
           </div>
         </div>
-        <div class="hf-sep"></div>
         <div class="hf-item">
           <div class="hf-ico hf-ico--cierre"><i class="fa-solid fa-calendar-xmark"></i></div>
           <div>
@@ -819,7 +685,6 @@ footer {
             <div class="hf-lbl">Cierre de inscripción</div>
           </div>
         </div>
-        <div class="hf-sep"></div>
         <div class="hf-item">
           <div class="hf-ico hf-ico--virtual"><i class="fa-solid fa-laptop"></i></div>
           <div>
@@ -829,15 +694,13 @@ footer {
         </div>
       </div>
 
-      <!-- BOTONES -->
       <div class="hero-btns">
         <a href="https://jcdocente.sanluis.edu.ar" target="_blank" class="btn-a btn-hero-main"><i class="fa-solid fa-user"></i> Acceso Docente</a>
         <a href="#pasos" class="btn-b"><i class="fa-solid fa-list-ol"></i> Cómo inscribirse</a>
       </div>
-
     </div>
 
-    <!-- Cards laterales solo en desktop -->
+    <!-- Cards laterales (desktop) -->
     <div class="hero-visual hero-visual--desktop">
       <div class="hv-card">
         <div class="hv-val">4 May</div>
@@ -847,18 +710,23 @@ footer {
         <div class="hv-val">22 May</div>
         <div class="hv-lbl">Cierre</div>
       </div>
-      <div class="hv-card accent" style="grid-column: span 2; background: var(--azul); border: 2px solid var(--azul);">
-        <div class="hv-val" style="color: #fff;">100%</div>
-        <div class="hv-lbl" style="color: #fff;">Virtual</div>
+      <div class="hv-card accent full">
+        <div class="hv-val" style="color:#fff;">100%</div>
+        <div class="hv-lbl" style="color:rgba(255,255,255,0.7);">Virtual</div>
       </div>
     </div>
   </section>
 </div>
 
-
+<!-- Scroll indicator (mobile) -->
+<div class="scroll-indicator" id="scrollIndicator">
+  <div class="scroll-indicator-inner">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    Deslizá para ver más
+  </div>
+</div>
 
 <!-- CONTENIDO -->
-      
 <div class="main">
 
   <!-- CRONOGRAMA -->
@@ -871,25 +739,25 @@ footer {
       </div>
     </div>
     <div class="crono-grid">
-      <div class="crono-card c1">
+      <div class="crono-card reveal">
         <div class="crono-ico"><i class="fa-solid fa-pencil"></i></div>
-        <div class="crono-fecha">Del 4 al 22 de May de 2026</div>
+        <div class="crono-fecha">Del 4 al 22 de Mayo de 2026</div>
         <div class="crono-titulo">Período de Inscripción</div>
         <div class="crono-desc">Inscripción 100% virtual. Desde las 08:00 hs del 4/5 hasta las 08:00 hs del 22/5. Modalidad online a través del portal oficial.</div>
       </div>
-      <div class="crono-card c2">
+      <div class="crono-card reveal">
         <div class="crono-ico"><i class="fa-solid fa-chart-bar"></i></div>
         <div class="crono-fecha">3 de Diciembre de 2026</div>
         <div class="crono-titulo">Orden de Mérito Provisorio</div>
         <div class="crono-desc">Publicación del listado preliminar con puntaje y posición de cada aspirante. Verificá tus datos antes del cierre de reclamos.</div>
       </div>
-      <div class="crono-card c3">
+      <div class="crono-card reveal">
         <div class="crono-ico"><i class="fa-solid fa-comment-dots"></i></div>
         <div class="crono-fecha">3 Dic al 18 Dic de 2026</div>
         <div class="crono-titulo">Período de Reclamos</div>
         <div class="crono-desc">10 días hábiles para interponer reclamos (una sola vez por aspirante) a través del portal web oficial.</div>
       </div>
-      <div class="crono-card c4">
+      <div class="crono-card reveal">
         <div class="crono-ico"><i class="fa-solid fa-trophy"></i></div>
         <div class="crono-fecha">15 de Feb de 2027</div>
         <div class="crono-titulo">Orden de Mérito Definitivo</div>
@@ -910,7 +778,7 @@ footer {
       </div>
     </div>
 
-    <div class="req-box">
+    <div class="req-box reveal">
       <div class="req-row">
         <div class="req-ico"><i class="fa-solid fa-flag"></i></div>
         <div>
@@ -941,22 +809,21 @@ footer {
       </div>
     </div>
 
-    <div class="req-niveles" style="margin-top: 18px;">
-      <div class="niv-card">
+    <div class="req-niveles">
+      <div class="niv-card reveal">
         <h4>Nivel Inicial</h4>
         <p>Primera inscripción: hasta <strong>35 años</strong> de edad. Excepción para docentes con antigüedad en establecimientos oficiales o adscriptos.</p>
       </div>
-      <div class="niv-card">
+      <div class="niv-card reveal">
         <h4>Nivel Primario</h4>
         <p>Primera inscripción: hasta <strong>40 años</strong> de edad. Excepción para docentes con antigüedad en establecimientos oficiales o adscriptos.</p>
       </div>
-      <div class="niv-card">
+      <div class="niv-card reveal">
         <h4>Nivel Secundario</h4>
         <p>No pueden inscribirse quienes <strong>gocen de jubilación o retiro</strong> en cualquier jurisdicción, o cumplan los requisitos para obtenerla.</p>
       </div>
     </div>
 
-    <!-- CORRECCIÓN 1: margin unificado a 20px arriba y abajo -->
     <div class="alerta-w">
       <i class="fa-solid fa-triangle-exclamation"></i>
       <div>Los antecedentes de desarrollo profesional solo se valoran si tienen <strong>fecha de finalización hasta el 30 de abril de 2026</strong>. No se consideran certificaciones con fecha posterior.</div>
@@ -981,49 +848,48 @@ footer {
     </div>
 
     <div class="doc-grid">
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-id-card"></i>
         <h4>DNI</h4>
         <p>Frente y dorso del DNI físico en un solo PDF. No se acepta formato digital ni constancia de la App "Mi Argentina".</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-graduation-cap"></i>
         <h4>Título y Analítico</h4>
         <p>Título base y analítico definitivo escaneados en un único PDF. No se aceptan constancias. Si está en trámite, adjuntar Certificado de Estudios Finalizados.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-file-signature"></i>
         <h4>Prestación de Servicios</h4>
         <p>Avalada por autoridad directiva, con períodos (desde–hasta), carácter, cargo y/o espacios curriculares. Adjuntar decretos correspondientes.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-file-pen"></i>
         <h4>Declaración Jurada</h4>
         <p>DJ de Incompatibilidad con la totalidad de cargos en el sistema educativo u otros organismos. Solo se valoran cargos del nivel en que se inscribe.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-star"></i>
         <h4>Concepto Profesional</h4>
         <p>Solo se valoran los ciclos lectivos <strong>2023, 2024 y 2025</strong>. Un único PDF por cada concepto, escaneado del original.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-book-open"></i>
         <h4>Postítulos</h4>
         <p>Doctorados, maestrías, licenciaturas, diplomaturas y especializaciones de <strong>200 horas o más</strong>, con reconocimiento nacional o provincial.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-certificate"></i>
         <h4>Capacitaciones</h4>
         <p>Antecedentes de desarrollo profesional avalados por organismo competente. Para certificaciones de universidades, adjuntar resolución correspondiente.</p>
       </div>
-      <div class="doc-card">
+      <div class="doc-card reveal">
         <i class="fa-solid fa-map-location-dot"></i>
         <h4>Domicilio</h4>
         <p>Debe ser georreferenciado dentro del sistema. El domicilio declarado será válido durante todo el Ciclo Lectivo 2027.</p>
       </div>
     </div>
 
-    <!-- CORRECCIÓN 2: margin-top subido de 6px a 20px -->
     <div class="alerta-i" style="margin-top: 20px;">
       <i class="fa-solid fa-rotate"></i>
       <div><strong>Actualización integral obligatoria:</strong> Para el Ciclo 2027 debés adjuntar <strong>todos</strong> los títulos y postítulos, aunque ya los hayas presentado anteriormente. También actualizá domicilio, teléfono y DNI (último ejemplar).</div>
@@ -1042,7 +908,7 @@ footer {
       </div>
     </div>
 
-   <div class="req-box reveal">
+    <div class="req-box reveal">
       <div class="pasos-list">
         <div class="paso reveal-left">
           <div class="paso-num">1</div>
@@ -1089,11 +955,12 @@ footer {
       </div>
     </div>
 
-       <div class="alerta-w">
+    <div class="alerta-w">
       <i class="fa-solid fa-triangle-exclamation"></i>
-      <div>Recibiràs un correo electrònico confirmando la recepciòn de la documentaciòn presentada.<strong>Esto no significa que su inscrpciòn fue aceptada por los bniveles correspondientes</strong></div>
+      <div>Recibirás un correo electrónico confirmando la recepción de la documentación presentada. <strong>Esto no significa que tu inscripción fue aceptada por los niveles correspondientes.</strong></div>
     </div>
-    
+  </section>
+
   <div class="div"></div>
 
   <!-- RECLAMOS -->
@@ -1106,19 +973,18 @@ footer {
       </div>
     </div>
     <div class="reclamos-grid">
-      <div class="rec-card">
+      <div class="rec-card reveal">
         <i class="fa-solid fa-calendar-days"></i>
         <h4>Período habilitado</h4>
         <p>Desde el <strong>3 de diciembre</strong> hasta el <strong>18 de diciembre de 2026</strong>, equivalente a 10 días hábiles. Vencido el plazo, los listados provisorios quedan firmes.</p>
       </div>
-      <div class="rec-card">
+      <div class="rec-card reveal">
         <i class="fa-solid fa-hand-point-up"></i>
         <h4>Una sola presentación</h4>
         <p>Cada aspirante puede interponer reclamo <strong>por única vez</strong>. El reclamo se realiza exclusivamente a través del portal web oficial.</p>
       </div>
     </div>
 
-    <!-- CORRECCIÓN 3: margin-top subido de 4px a 18px -->
     <div class="alerta-i" style="margin-top: 18px;">
       <i class="fa-solid fa-circle-info"></i>
       <div>Los reclamos se gestionan <strong>exclusivamente</strong> en <a href="https://jcdocente.sanluis.edu.ar" target="_blank" style="color: var(--azul); font-weight: 600;">jcdocente.sanluis.edu.ar</a>. No se aceptan reclamos presenciales ni por correo electrónico.</div>
@@ -1137,21 +1003,21 @@ footer {
       </div>
     </div>
     <div class="sedes-grid">
-      <div class="sede">
+      <div class="sede reveal">
         <div class="sede-head"><i class="fa-solid fa-location-dot"></i> Región I y VI - San Luis</div>
         <div class="sede-body">
           <div class="sede-fila"><i class="fa-solid fa-phone"></i><div><strong>Inicial y Primario:</strong> <span>Internos 8465 / 8466</span></div></div>
           <div class="sede-fila"><i class="fa-solid fa-phone"></i><div><strong>Secundario:</strong> <span>Internos 1070 / 8434</span></div></div>
         </div>
       </div>
-      <div class="sede">
+      <div class="sede reveal">
         <div class="sede-head"><i class="fa-solid fa-location-dot"></i> Región II y III - Villa Mercedes</div>
         <div class="sede-body">
           <div class="sede-fila"><i class="fa-solid fa-phone"></i><div><strong>Inicial y Primario:</strong> <span>Interno 5772</span></div></div>
           <div class="sede-fila"><i class="fa-solid fa-phone"></i><div><strong>Secundario:</strong> <span>Interno 6930</span></div></div>
         </div>
       </div>
-      <div class="sede">
+      <div class="sede reveal">
         <div class="sede-head"><i class="fa-solid fa-location-dot"></i> Región IV y V - Concarán</div>
         <div class="sede-body">
           <div class="sede-fila"><i class="fa-solid fa-phone"></i><div><strong>Inicial y Primario:</strong> <span>Interno 8375</span></div></div>
@@ -1186,13 +1052,14 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      Desarrollado por Direccion Gestion Educativa.<br>
-      "2026 - Año de la Educación en San Luis - Bicentenario de la Primera Escuela de Domingo Faustino Sarmiento" 
+      Desarrollado por Dirección Gestión Educativa.<br>
+      "2026 - Año de la Educación en San Luis - Bicentenario de la Primera Escuela de Domingo Faustino Sarmiento"
     </div>
   </div>
 </footer>
 
 <script>
+// ── Scroll activo en nav ──
 const navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
@@ -1200,40 +1067,33 @@ window.addEventListener('scroll', () => {
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
   navLinks.forEach(a => {
     a.style.background = a.getAttribute('href') === '#' + cur ? 'var(--celeste-claro)' : '';
-    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--azul)' : '';
+    a.style.color      = a.getAttribute('href') === '#' + cur ? 'var(--azul)' : '';
   });
-});
+}, { passive: true });
 
-// Hide scroll indicator on scroll
+// ── Scroll indicator ──
 const scrollIndicator = document.getElementById('scrollIndicator');
 if (scrollIndicator) {
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      scrollIndicator.classList.add('hidden');
-    } else {
-      scrollIndicator.classList.remove('hidden');
-    }
+    scrollIndicator.classList.toggle('hidden', window.scrollY > 60);
   }, { passive: true });
 }
 
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
+// ── Hamburger menu ──
+const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
-
-mobileMenu.addEventListener('click', (e) => {
+mobileMenu.addEventListener('click', e => {
   if (e.target === mobileMenu) {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
 });
-
 document.querySelectorAll('.mobile-link').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -1241,6 +1101,22 @@ document.querySelectorAll('.mobile-link').forEach(link => {
     document.body.style.overflow = '';
   });
 });
+
+// ── Scroll Reveal con IntersectionObserver ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Escalonado: cada elemento hijo dentro de un grupo se anima con delay
+      const siblings = entry.target.parentElement.querySelectorAll('.reveal, .reveal-left');
+      let delay = 0;
+      siblings.forEach((el, idx) => { if (el === entry.target) delay = idx * 80; });
+      setTimeout(() => entry.target.classList.add('visible'), delay);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
